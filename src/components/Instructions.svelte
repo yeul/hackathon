@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="js">
 	export let instructions = [];
 </script>
 
