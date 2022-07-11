@@ -7,19 +7,17 @@
 	export let icon;
 	export let viewName;
 
-	export let setViewName = console.log;
+	export let setViewName;
 	// TODO: change to original: const { onClick } = useXProps();
 	export let onClick = console.log;
 	export let tileIcons = productListData.content.tileIcons;
-
-	console.log(tileIcons[icon]);
 </script>
 
 <button
 	class="tile"
 	aria-label={`${header} ${body}`}
 	type="button"
-	onClick={() => {
+	on:click={() => {
 		setViewName(viewName);
 		onClick({ linkName: viewName, src: 'link_click' });
 	}}

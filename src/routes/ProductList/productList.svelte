@@ -22,7 +22,7 @@
 	const showPayLaterInstructions = productTiles && !!availableTiles.payLater?.length;
 	const showCreditInstructions = productTiles && !!availableTiles.credit?.length;
 
-	export let setViewName = () => {};
+	export let setViewName = console.log;
 </script>
 
 <Header logo={'logo'} headline={content?.headline} subheadline={content?.subheadline} />
