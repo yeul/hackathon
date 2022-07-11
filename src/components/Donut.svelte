@@ -5,7 +5,7 @@
 	export let timeStamp;
 	// TODO: make isQualifying a store/data/thing, this gets used everywhere
 	export let qualifying;
-	let isQualifying = qualifying === true;
+	let isQualifying = qualifying === 'true';
 	let showPeriodicPayment = isQualifying && periodicPayment !== '-';
 
 	let divClassName = `donut__single_payment ${
