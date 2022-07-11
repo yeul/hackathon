@@ -7,7 +7,7 @@
 	import InlineLinks from '../../components/InlineLinks.svelte';
 	import { currencyFormat } from '../../lib/currencyFormat';
 
-	export let productMeta = { qualifying: 'false', periodicPayment: '23.99' };
+	export let productMeta = { qualifying: 'true', periodicPayment: '23.99' };
 	export let content = {
 		estimatedInstallments: {
 			items: [
@@ -27,10 +27,10 @@
 		instructions: [
 			'Choose PayPal at checkout to pay later with <strong>Pay in 4</strong>. ',
 			'Complete your purchase with a 25% down payment.',
-			'Use autopay for the rest of your payments. It’s easy!'
+			"Use autopay for the rest of your payments. It's easy!"
 		],
 		disclosure:
-			'Pay in 4 is available to consumers upon approval for purchases of $30-$1,500. Pay in 4 is not currently available to residents of Missouri, Nevada, New Mexico, North Dakota, Wisconsin, or any U.S. Territories. Offer availability depends on the merchant and also may not be available for certain recurring, subscription services.​ When applying, a soft credit check may be needed, but will not affect your credit score.​ You must be of legal age in your U.S. state of residence to use Pay in 4.​ Loans to California residents are made or arranged pursuant to a California Financing Law License.​ PayPal, Inc. is a Georgia Installment Lender Licensee, NMLS #910457.​ Rhode Island Small Loan Lender Licensee.',
+			'Pay in 4 is available to consumers upon approval for purchases of $30-$1,500. Pay in 4 is not currently available to residents of Missouri, Nevada, New Mexico, North Dakota, Wisconsin, or any U.S. Territories. Offer availability depends on the merchant and also may not be available for certain recurring, subscription services. When applying, a soft credit check may be needed, but will not affect your credit score. You must be of legal age in your U.S. state of residence to use Pay in 4. Loans to California residents are made or arranged pursuant to a California Financing Law License. PayPal, Inc. is a Georgia Installment Lender Licensee, NMLS #910457. Rhode Island Small Loan Lender Licensee.',
 		linkToProductList: 'See other ways to pay later'
 	};
 
@@ -61,8 +61,15 @@
 				.join(', ')
 		: donutTimestamps.map((timestamp) => `${currencyFormat(periodicPayment)} for ${timestamp}`);
 
-	const donutItems = hasInstallments ? estimatedInstallments?.items : donutTimestamps;
-	const localeFormattedPayment = periodicPayment.replace(/(\s?EUR)/g, ' €');
+	const donutItems = (hasInstallments ? estimatedInstallments?.items : donutTimestamps).map(
+		(item, index) => ({
+			currentNumber: index + 1,
+			periodicPayment: (item?.total_payment ?? periodicPayment).replace(/(\s?EUR)/g, ' €'),
+			paymentDate: item?.payment_date ?? donutTimestamps[index]
+		})
+	);
+
+	console.log({ hasInstallments, donutItems });
 </script>
 
 <Header logo={'logo'} headline={content?.headline} subheadline={content?.subheadline} />
@@ -75,18 +82,16 @@
 						<div class="content__col">
 							<div class="content__row donuts">
 								<div class="donuts__container">
-									<span aria-hidden={qualifying !== 'true'} class="sr-only">
+									<span aria-hidden={!isQualifying} class="sr-only">
 										{donutScreenReaderString}
 									</span>
 									<!-- regex replaces EUR with the euro symbol € -->
-									{#each donutItems as installment, index}
+									{#each donutItems as { periodicPayment, currentNumber, paymentDate }}
 										<Donut
 											{qualifying}
-											periodicPayment={installment?.total_payment
-												? installment.total_payment.replace(/(\s?EUR)/g, ' €')
-												: localeFormattedPayment}
-											currentNumber={index + 1}
-											timeStamp={installment?.payment_date ?? donutTimestamps[index]}
+											{periodicPayment}
+											{currentNumber}
+											{paymentDate}
 											numberOfPayments={donutItems.length}
 										/>
 									{/each}

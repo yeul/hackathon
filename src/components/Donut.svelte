@@ -2,7 +2,7 @@
 	export let currentNumber = 1;
 	export let numberOfPayments = 4;
 	export let periodicPayment;
-	export let timeStamp;
+	export let paymentDate;
 	// TODO: make isQualifying a store/data/thing, this gets used everywhere
 	export let qualifying;
 	let isQualifying = qualifying === 'true';
@@ -20,7 +20,6 @@
 	let DONUT_BACKGROUND_WIDTH = 3;
 	let DONUT_SEGMENT_WIDTH = 4;
 
-	// (currentNum / numOfPayments) * 100;
 	let percentage = (currentNumber / numberOfPayments) * 100;
 </script>
 
@@ -50,7 +49,7 @@
 	{#if showPeriodicPayment}
 		<span class="donut__payment">{periodicPayment}</span>
 	{/if}
-	<span class="donut__timestamp">{timeStamp}</span>
+	<span class="donut__timestamp">{paymentDate}</span>
 </div>
 
 <style type="text/scss">
