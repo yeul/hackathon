@@ -156,4 +156,5 @@
 
 <style type="text/scss">
 	@import '../../styles/components/_content.scss';
+	@import './shortTerm.scss';
 </style>
