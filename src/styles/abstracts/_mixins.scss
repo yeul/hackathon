@@ -47,16 +47,17 @@
 	// Prevent the wrapper from intercepting click events from the scrollbar
 	pointer-events: none;
 
+	// TODO: change back to variables. temporarily hard-coding values
 	@include tablet {
-		max-width: $content-wrapper-max-width-tablet;
+		max-width: 640px;
 	}
 
 	@include desktop {
-		max-width: $content-wrapper-max-width-desktop;
+		max-width: 840px;
 	}
 
 	@include apiIframe {
-		max-width: $content-wrapper-max-width-api-iframe;
+		max-width: 100vw;
 	}
 
 	:first-child {

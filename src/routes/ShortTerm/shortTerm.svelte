@@ -1,4 +1,5 @@
 <script lang="js">
+	import Header from '../../components/Header.svelte';
 	import Instructions from '../../components/Instructions.svelte';
 	import ProductListLink from '../../components/ProductListLink.svelte';
 
