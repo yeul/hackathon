@@ -3,7 +3,7 @@
 	export let numberOfPayments = 4;
 	export let periodicPayment;
 	export let timeStamp;
-	// make isQualifying a store/data/thing, this gets used everywhere
+	// TODO: make isQualifying a store/data/thing, this gets used everywhere
 	export let qualifying;
 	let isQualifying = qualifying === true;
 	let showPeriodicPayment = isQualifying && periodicPayment !== '-';
