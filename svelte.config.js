@@ -17,6 +17,14 @@ const config = {
 		methodOverride: {
 			allowed: ['PATCH', 'DELETE']
 		}
+	},
+
+	onwarn: (warning, handler) => {
+		const { code } = warning;
+
+		if (code === 'css-unused-selector') return;
+
+		handler(warning);
 	}
 };
 
