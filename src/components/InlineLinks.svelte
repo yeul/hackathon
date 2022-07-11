@@ -24,7 +24,7 @@
 {:else}
 	{#each text as textChunk}
 		{#if !Array.isArray(textChunk)}
-			<span class="inline-text">{textChunk}</span>
+			<span class="inline-text">{@html textChunk}</span>
 		{:else}
 			{@const [linkText, linkUrl] = textChunk}
 			<span class="inline-link">
