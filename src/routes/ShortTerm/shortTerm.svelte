@@ -25,11 +25,9 @@
 	let isQualifying = qualifying === 'true';
 	let hasInstallments = Object.keys(estimatedInstallments?.items ?? {}).length;
 
-	const productListContent = 'See other ways to pay over time';
-
 	// TODO: build out functionality
 	const renderProductListLink = () => {
-		console.log('This takes you back to the product list modal');
+		console.log('This takes you back to the product list modal.');
 	};
 
 	const donutScreenReaderString = hasInstallments
@@ -91,7 +89,7 @@
 				<div class="content__row productLink">
 					<div class="productLink__container">
 						<ProductListLink openProductList={renderProductListLink}>
-							{productListContent}
+							{content?.linkToProductList}
 						</ProductListLink>
 					</div>
 				</div>
