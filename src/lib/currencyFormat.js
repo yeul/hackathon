@@ -7,7 +7,7 @@ export const currencyFormat = (string) => {
 	let formattedStr = string;
 	const match =
 		formattedStr?.match(
-			// eslint-disable-next-line security/detect-unsafe-regex
+			// TODO add this eslint-disable-next-line security/detect-unsafe-regex
 			/((\$|£)?(\d{1,5}(\.|,)){1,3}\d\d)(\s?EUR)?/g
 		) ?? null;
 
