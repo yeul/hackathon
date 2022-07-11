@@ -2,7 +2,7 @@
 	import Icon from '../components/Icon.svelte';
 	import { isLander, isIframe } from '../lib/';
 
-	export let logo = 'logo';
+	export let logo = '';
 	export let headline = '';
 	export let subheadline = '';
 
@@ -37,7 +37,7 @@
 	</div>
 
 	{#if !landerTarget}
-		<button classe="close" aria-label="Close" type="button" id="close-btn" on:click={handleClose}>
+		<button class="close" aria-label="Close" type="button" id="close-btn" on:click={handleClose}>
 			<Icon name={'close'} />
 		</button>
 	{/if}
