@@ -65,7 +65,7 @@
 	const localeFormattedPayment = periodicPayment.replace(/(\s?EUR)/g, ' €');
 </script>
 
-<Header logo={'logo'} headline={'Test headline 123'} subheadline={'Test subheadline 123'} />
+<Header logo={'logo'} headline={content?.headline} subheadline={content?.subheadline} />
 <BodyContent>
 	<div class="content__container">
 		<main class="main">
